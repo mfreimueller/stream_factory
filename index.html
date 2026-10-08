@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Stream Factory</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Stream Factory</h1>
+  <div class="group" id="toolbox"><span class="lbl">Add</span></div>
+  <div class="group">
+    <span class="lbl">Demo</span>
+    <select id="demos"></select>
+  </div>
+  <label class="check" title="Hide counters and result until the run is finished. Let the class guess first."><input type="checkbox" id="predict"> Predict mode</label>
+  <label class="check" title="Java 9+: count() skips the pipeline when the stream size is known (no filter/distinct)."><input type="checkbox" id="shortcut"> count() shortcut</label>
+</header>
+
+<main>
+  <section class="stage" id="stage">
+    <div class="source" id="source">
+      <div class="src-head"><code>movies.stream()</code><span id="srcState" class="state">ready</span></div>
+      <div class="cards" id="cards"></div>
+      <div class="stamp"><span>CONSUMED</span></div>
+    </div>
+    <div class="belt-line" id="beltLine"></div>
+    <div class="belt" id="belt"></div>
+    <div class="station collector" id="collector">
+      <div class="st-head">
+        <div class="st-title"><code>.</code></div>
+        <select id="terminal"></select>
+        <div class="tag" id="termTag"></div>
+      </div>
+      <div class="slot" id="collectorSlot"></div>
+      <div class="collector-body" id="collectorBody"></div>
+    </div>
+    <div class="token" id="token"></div>
+    <div class="toast" id="toast"></div>
+  </section>
+
+  <section class="controls">
+    <button id="btnPlay" class="primary">&#9654; Play</button>
+    <button id="btnStep" title="One event">Step</button>
+    <button id="btnCard" title="Run until the next card leaves the source">Next card</button>
+    <button id="btnFinish" title="Run to the end without animation">Finish</button>
+    <button id="btnNew" title="movies.stream() again">New stream</button>
+    <label class="speed">Speed <input type="range" id="speed" min="1" max="5" value="3"></label>
+  </section>
+
+  <section class="panels">
+    <div class="panel"><h2>Java</h2><pre id="code"></pre></div>
+    <div class="panel"><h2>Event log</h2><div id="log" class="log"></div></div>
+    <div class="panel"><h2>Console <code>System.out</code></h2><div id="out" class="log out"></div></div>
+  </section>
+</main>
+
+<script src="js/data.js"></script>
+<script src="js/presets.js"></script>
+<script src="js/engine.js"></script>
+<script src="js/codegen.js"></script>
+<script src="js/ui.js"></script>
+</body>
+</html>
